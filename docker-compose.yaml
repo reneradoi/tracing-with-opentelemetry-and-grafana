@@ -23,3 +23,8 @@ services:
       - GF_INSTALL_PLUGINS=
     ports:
       - '3000:3000'
+
+  app:
+    image: world-countries:1.0
+    ports:
+      - "80:80"
