@@ -13,9 +13,18 @@ considered representative for a microservice architecture.
 ![scope](./scope.jpg)
 
 ## Build and run application
+This demo setup is for local run. Dependencies:
+* Ubuntu or other Linux (e.g. in WSL)
+* Docker Engine, Docker Compose
+
+checkout repo:
+`git clone https://codehub.sva.de/Rene.Radoi/tracing_with_opentelemetry_grafana.git`
+
+build image for web service locally:
 `docker build -t world-countries:1.0 .`
 
-`docker run -d -p 80:80 world-countries:1.0` or `docker-compose up -d`
+run on your machine:
+`docker-compose up -d`
 
 ## add auto instrumentation
 no need to adjust the program code to add tracing
