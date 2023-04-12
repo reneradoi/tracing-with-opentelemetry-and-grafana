@@ -2,3 +2,5 @@ fastapi
 uvicorn
 sqlalchemy
 requests
+opentelemetry-distro
+opentelemetry-exporter-otlp
