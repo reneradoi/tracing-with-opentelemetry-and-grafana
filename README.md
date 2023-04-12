@@ -4,18 +4,20 @@ In Cloud or microservice environments it's often hard to hunt down performance i
 the communication flow. OpenTelemetry provides the tools and methods to get tracing going, Tempo and Grafana are backend / 
 visualization tools for gaining insights from tracing.
 
-As adding tracing to all involved components and services is hard, auto instrumentation is a feasible approach.
+As adding tracing to all involved components and services can be a tough task, auto instrumentation is a feasible approach.
 
 This demo includes an example microservice that calls an outside API and writes to a local database. Tracing is added
 via auto instrumentation, traces are sent to Tempo (tracing backend) and can be explored via Grafana. This setup can be
 considered representative for a microservice architecture.
+
+![scope](./scope.jpg)
 
 ## Build and run application
 `docker build -t world-countries:1.0 .`
 
 `docker run -d -p 80:80 world-countries:1.0` or `docker-compose up -d`
 
-## add Auto instrumentation
+## add auto instrumentation
 no need to adjust the program code to add tracing
 
 tracing exporter can be plugged in at startup: 
