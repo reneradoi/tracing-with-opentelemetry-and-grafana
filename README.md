@@ -49,3 +49,7 @@ is then rolled out as custom resources, services and components can be auto-inst
 `instrumentation.opentelemetry.io/inject-python: "true"`
 
 More information: https://github.com/open-telemetry/opentelemetry-operator
+
+## Possible extensions
+- integrate with logs (requires Loki)
+- generate span metrics, e.g. error rate, average duration (requires Prometheus, see https://grafana.com/docs/tempo/latest/metrics-generator/span_metrics/)
