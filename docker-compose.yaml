@@ -17,12 +17,27 @@ services:
     restart: always
     depends_on:
       - tempo
+    volumes:
+      - ./grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
       - GF_INSTALL_PLUGINS=
     ports:
       - '3000:3000'
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus-server
+    restart: always
+    command:
+      - --config.file=/etc/prometheus.yaml
+      - --web.enable-remote-write-receiver
+      - --enable-feature=exemplar-storage
+    volumes:
+      - ./prometheus.yaml:/etc/prometheus.yaml
+    ports:
+      - '9090:9090'
 
   app:
     image: world-countries:1.0
