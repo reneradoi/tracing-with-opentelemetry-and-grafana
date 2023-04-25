@@ -91,7 +91,7 @@
         "y": 0
       },
       "id": 3,
-      "interval": "60s",
+      "interval": "15s",
       "options": {
         "legend": {
           "calcs": [],
@@ -117,7 +117,7 @@
           "refId": "A"
         }
       ],
-      "title": "Webservice Requests per Minute",
+      "title": "Webservice Requests Rate",
       "type": "timeseries"
     },
     {
@@ -249,7 +249,7 @@
         "y": 8
       },
       "id": 5,
-      "interval": "60s",
+      "interval": "15s",
       "options": {
         "legend": {
           "calcs": [],
