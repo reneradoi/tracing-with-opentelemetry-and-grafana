@@ -4,8 +4,8 @@ services:
     image: grafana/tempo:latest
     command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
-      - ./tempo.yaml:/etc/tempo.yaml
-      - ./tempo-data:/tmp/tempo
+      - ./config/tempo/tempo.yaml:/etc/tempo.yaml
+      - ./config/tempo/tempo-data:/tmp/tempo
     ports:
       - "3200:3200"   # tempo
       - "4317:4317"  # otlp grpc
@@ -18,7 +18,9 @@ services:
     depends_on:
       - tempo
     volumes:
-      - ./grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./config/grafana/grafana-datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - ./config/grafana/dashboard.yaml:/etc/grafana/provisioning/dashboards/dashboard.yaml
+      - ./config/grafana/tracing-dashboard.json:/var/lib/grafana/dashboards/tracing-dashboard.json
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
@@ -35,7 +37,7 @@ services:
       - --web.enable-remote-write-receiver
       - --enable-feature=exemplar-storage
     volumes:
-      - ./prometheus.yaml:/etc/prometheus.yaml
+      - ./config/prometheus/prometheus.yaml:/etc/prometheus.yaml
     ports:
       - '9090:9090'
 

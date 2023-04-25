@@ -13,6 +13,7 @@ datasources:
   editable: false
   jsonData:
     httpMethod: GET
+    timeInterval: 60s
 - name: Tempo
   type: tempo
   access: proxy
