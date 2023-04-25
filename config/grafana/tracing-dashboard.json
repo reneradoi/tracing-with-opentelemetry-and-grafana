@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -120,6 +119,71 @@
       ],
       "title": "Webservice Requests per Minute",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "tempo"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 70
+              },
+              {
+                "color": "red",
+                "value": 85
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "mean"
+          ],
+          "fields": "/^Duration$/",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "tempo"
+          },
+          "key": "Q-79f06d07-2d99-4cfc-b506-1e48146ca83a-0",
+          "limit": 2000,
+          "queryType": "nativeSearch",
+          "refId": "A",
+          "search": "",
+          "serviceName": "world-countries"
+        }
+      ],
+      "title": "Average Duration",
+      "type": "gauge"
     },
     {
       "datasource": {
@@ -221,45 +285,47 @@
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
               },
               {
-                "color": "orange",
-                "value": 70
-              },
-              {
                 "color": "red",
-                "value": 85
+                "value": 80
               }
             ]
-          }
+          },
+          "unit": "none"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 16
+        "w": 5,
+        "x": 13,
+        "y": 8
       },
-      "id": 1,
+      "id": 7,
       "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "mean"
+            "min"
           ],
           "fields": "/^Duration$/",
           "values": false
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true
+        "textMode": "auto"
       },
       "pluginVersion": "9.4.7",
       "targets": [
@@ -268,16 +334,79 @@
             "type": "tempo",
             "uid": "tempo"
           },
-          "key": "Q-79f06d07-2d99-4cfc-b506-1e48146ca83a-0",
           "limit": 2000,
           "queryType": "nativeSearch",
           "refId": "A",
-          "search": "",
           "serviceName": "world-countries"
         }
       ],
-      "title": "Average Duration",
-      "type": "gauge"
+      "title": "Min Request Duration",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "tempo"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 5,
+        "x": 18,
+        "y": 8
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "none",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "/^Duration$/",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.4.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "tempo"
+          },
+          "limit": 2000,
+          "queryType": "nativeSearch",
+          "refId": "A",
+          "serviceName": "world-countries"
+        }
+      ],
+      "title": "Max Request Duration",
+      "type": "stat"
     }
   ],
   "refresh": "",
