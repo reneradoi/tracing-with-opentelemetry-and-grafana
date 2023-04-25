@@ -26,6 +26,9 @@ build image for web service locally:
 run on your machine:
 `docker-compose up -d`
 
+generate requests - chose a country and run curl:
+`while true; do curl http://0.0.0.0:80/world?country=Finland; sleep 2; done > /dev/null 2>&1`
+
 ## add auto instrumentation
 no need to adjust the program code to add tracing
 
@@ -39,9 +42,10 @@ uvicorn world_countries:app --host 0.0.0.0 --port 80
 ```
 
 ## Grafana Explore
-`sensible-browser http://localhost:3000`
+`http://localhost:3000` -> TraceQL Query: `{.http.status_code = 404}`
 
--> TraceQL Query: `{.http.status_code = 404}`
+## Grafana Dashboard
+`http://localhost:3000` -> Dashboards -> Tracing -> Tracing Metrics
 
 ## Deployment Scenario
 In Kubernetes-based infrastructure environments it's a good idea to add instrumentation via the operator. Configuration
@@ -52,4 +56,3 @@ More information: https://github.com/open-telemetry/opentelemetry-operator
 
 ## Possible extensions
 - integrate with logs (requires Loki)
-- generate span metrics, e.g. error rate, average duration (requires Prometheus, see https://grafana.com/docs/tempo/latest/metrics-generator/span_metrics/)
