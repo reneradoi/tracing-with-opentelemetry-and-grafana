@@ -26,7 +26,7 @@ build image for web service locally:
 run on your machine:
 `docker-compose up -d`
 
-generate requests - chose a country and run curl:
+generate requests - choose a country and run curl:
 `while true; do curl http://0.0.0.0:80/world?country=Finland; sleep 2; done > /dev/null 2>&1`
 
 ## add auto instrumentation
