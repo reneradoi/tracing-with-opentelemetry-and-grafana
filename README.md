@@ -18,7 +18,7 @@ This demo setup is for local run. Dependencies:
 * Docker Engine, Docker Compose
 
 checkout repo:
-`git clone https://codehub.sva.de/Rene.Radoi/tracing_with_opentelemetry_grafana.git`
+`git clone https://github.com/reneradoi/tracing-with-opentelemetry-and-grafana`
 
 build image for web service locally:
 `docker build -t world-countries:1.0 .`
@@ -41,7 +41,7 @@ instead of
 uvicorn world_countries:app --host 0.0.0.0 --port 80
 ```
 
-Review the required changes in a commit: https://codehub.sva.de/Rene.Radoi/tracing_with_opentelemetry_grafana/-/commit/eafd96741b8c7cd7a533fd08f3bea084b1064cd4#6651ddff6eb82c840ced7c1dddee15c6e1913dd4
+Review the required changes in a commit: https://github.com/reneradoi/tracing-with-opentelemetry-and-grafana/-/commit/eafd96741b8c7cd7a533fd08f3bea084b1064cd4#6651ddff6eb82c840ced7c1dddee15c6e1913dd4
 
 ## Grafana Explore
 `http://localhost:3000` -> TraceQL Query: `{.http.status_code = 404}`
